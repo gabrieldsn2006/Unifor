@@ -40,5 +40,5 @@ ex6x6 = [
 [16, 15, 14, 13, 12, 11],
 ]
 
-print(Al.det(ex2x2))
+print(Al.det(ex6x6))
 Al.exibir(ex2x2)

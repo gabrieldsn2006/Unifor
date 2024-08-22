@@ -55,52 +55,48 @@ def produto(A, B):
     return P
 
 def sistema(*sis):
-    nLinhas = len(sis) # nº de linhas da matriz
-    nColunas = len(sis[0]) # nº de colunas da matriz
+    sis = Matriz(sis)
 
-    for i in range(nLinhas):
+    for i in range(sis.nLinhas):
 
-        pivot = sis[i][i] # capturando o divisor para o pivoteamento
-        for j in range(nColunas): # pivoteamento
-            if sis[i][i] != 0:
-                sis[i][j] = sis[i][j]/pivot
+        pivot = sis.vetor[i][i] # capturando o divisor para o pivoteamento
+        for j in range(sis.nColunas): # pivoteamento
+            if sis.vetor[i][i] != 0:
+                sis.vetor[i][j] = sis.vetor[i][j]/pivot
 
         aux = list()
-        for pos in range(nLinhas): # capturando a coluna referente a linha "i" que foi pivoteada
-            aux.append(sis[pos][i])
+        for pos in range(sis.nLinhas): # capturando a coluna referente a linha "i" que foi pivoteada
+            aux.append(sis.vetor[pos][i])
 
-        for ii in range(nLinhas): # atribuindo valores para as outras linhas
+        for ii in range(sis.nLinhas): # atribuindo valores para as outras linhas
             if ii != i:
-                for jj in range(nColunas): sis[ii][jj] -= aux[ii]*sis[i][jj]
+                for jj in range(sis.nColunas): sis.vetor[ii][jj] -= aux[ii]*sis.vetor[i][jj]
 
     solucao = list()
-    for iii in range(nLinhas): # separando a solução que é apenas a ultima coluna da matriz
-        solucao.append(float(f'{sis[iii][nColunas-1]:.1f}'))
+    for iii in range(sis.nLinhas): # separando a solução que é apenas a ultima coluna da matriz
+        solucao.append(float(f'{sis.vetor[iii][sis.nColunas-1]:.1f}'))
     return solucao
 
 def det(A):
-    nLinhas = len(A) # nº de linhas da matriz
-    nColunas = len(A[0]) # nº de colunas da matriz
-    if nLinhas != nColunas: return None
+    A = Matriz(A)
+    if A.quadrado == False: return None
 
-    if nLinhas == 2:
-        return (A[0][0] * A[1][1]) - (A[0][1] * A[1][0])
+    if A.nLinhas == 2:
+        return (A.vetor[0][0] * A.vetor[1][1]) - (A.vetor[0][1] * A.vetor[1][0])
     else:
         r = 0
-        for x in range(nColunas):
-            r += A[0][x] * laplace(A, 0, x)
+        for x in range(A.nColunas):
+            r += A.vetor[0][x] * laplace(A.vetor, 0, x)
         return r
 
 def laplace(A, i, j):
     mat = list()
+    A = Matriz(A)
 
-    nLinhas = len(A)
-    nColunas = len(A[0])
-
-    for x in range(1, nLinhas):
+    for x in range(1, A.nLinhas):
         mat.append(list())
-        for y in range(nColunas):
+        for y in range(A.nColunas):
             if y != j:
-                mat[x-1].append(A[x][y])
+                mat[x-1].append(A.vetor[x][y])
 
     return ((-1)**(i+j)) * det(mat)
