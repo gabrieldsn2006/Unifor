@@ -7,10 +7,9 @@ class Matriz:
         else: self.quadrado = False
 
 def exibir(A):
-    A = Matriz(A)
     print(f'Matriz : ')
-    for i in range(A.nLinhas):
-        print(A.vetor[i])
+    for i in range(len(A)):
+        print(A[i])
 
 def transposta(A):
     A = Matriz(A)
