@@ -10,10 +10,10 @@ class Matriz:
             self.quadrado = True
 
         self.linhas = vetor[:]
-        C = []
+        C = list()
         tr = 0
         for i in range(self.nColunas):
-            C.append([])
+            C.append(list())
             for j in range(self.nLinhas):
                 C[i].append(vetor[j][i])
                 if i == j: tr += vetor[i][j]
@@ -82,13 +82,26 @@ def Sistema(*sis):
         solucao.append(float(f'{sis[iii][nColunas-1]:.1f}'))
     return solucao
 
-ex = [[1, 2, 3, 4, 5],
-      [16, 17, 18, 19, 6],
-      [15, 24, 25, 20, 7],
-      [14, 23, 22, 21, 8],
-      [13, 12, 11, 10, 9]]
-
 ex = [
+[1, 2],
+[4, 3]
+]
+
+ex0 = [
+[1, 2, 3],
+[8, 9, 4],
+[7, 6, 5]
+]
+
+ex1 = [
+[1, 2, 3, 4, 5],
+[16, 17, 18, 19, 6],
+[15, 24, 25, 20, 7],
+[14, 23, 22, 21, 8],
+[13, 12, 11, 10, 9]
+]
+
+ex2 = [
 [1, 2, 3, 4, 5, 6],
 [20, 21, 22, 23, 24, 7],
 [19, 32, 33, 34, 25, 8],
@@ -97,7 +110,7 @@ ex = [
 [16, 15, 14, 13, 12, 11],
 ]
 
-# matrix calculator site
+# https://matrixcalc.org
 
 def det(A):
     nLinhas = len(A) # nº de linhas da matriz
@@ -113,13 +126,13 @@ def det(A):
         return r
 
 def laplace(A, i, j):
-    mat = []
+    mat = list()
 
-    nLinhas = len(A) # nº de linhas da matriz
-    nColunas = len(A[0]) # nº de colunas da matriz
+    nLinhas = len(A)
+    nColunas = len(A[0])
 
     for x in range(1, nLinhas):
-        mat.append([])
+        mat.append(list())
         for y in range(nColunas):
             if y != j:
                 mat[x-1].append(A[x][y])
