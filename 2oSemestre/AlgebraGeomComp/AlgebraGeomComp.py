@@ -3,7 +3,8 @@ class Matriz:
         self.nLinhas = len(vetor)
         self.nColunas = len(vetor[0])
         self.vetor = vetor[:]
-        self.quadrado = True if self.nLinhas == self.nColunas else False
+        if self.nLinhas == self.nColunas: self.quadrado = True 
+        else: self.quadrado = False
 
 def exibir(A):
     A = Matriz(A)
