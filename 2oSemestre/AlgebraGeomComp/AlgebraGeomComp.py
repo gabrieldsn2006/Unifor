@@ -40,19 +40,31 @@ def soma(A, B):
     return S
 
 def produto(A, B):
-    A = Matriz(A)
-    B = Matriz(B)
-    P = list()
-    
-    for i in range(A.nLinhas):
-        aux = list()
-        for k in range(B.nColunas):
-            sum = 0
-            for j in range(A.nColunas):
-                sum += A.vetor[i][j] * B.vetor[j][k]
-            aux.append(sum)
-        P.append(aux)
-    return P
+    if isinstance(A, list) and isinstance(B, list): # produto de matrizes
+        A = Matriz(A)
+        B = Matriz(B)
+        if A.nColunas != B.nLinhas: return None
+        P = list()
+        for i in range(A.nLinhas):
+            aux = list()
+            for k in range(B.nColunas):
+                sum = 0
+                for j in range(A.nColunas):
+                    sum += A.vetor[i][j] * B.vetor[j][k]
+                aux.append(sum)
+            P.append(aux)
+        return P
+    elif isinstance(A, (int, float)) or isinstance(B, (int, float)): # matriz * cte
+        if isinstance(A, (int, float)):
+            cte = A
+            mat = Matriz(B)
+        else:
+            cte = B
+            mat = Matriz(A)
+        for i in range(mat.nLinhas):
+            for j in range(mat.nColunas):
+                mat.vetor[i][j] *= cte
+        return mat.vetor
 
 def sistema(*sis):
     sis = Matriz(sis)
@@ -80,23 +92,40 @@ def sistema(*sis):
 def det(A):
     A = Matriz(A)
     if A.quadrado == False: return None
-
-    if A.nLinhas == 2:
-        return (A.vetor[0][0] * A.vetor[1][1]) - (A.vetor[0][1] * A.vetor[1][0])
+    
+    if A.nLinhas == 1:
+        return A.vetor[0][0]
     else:
-        r = 0
+        d = 0
         for x in range(A.nColunas):
-            r += A.vetor[0][x] * laplace(A.vetor, 0, x)
-        return r
+            d += A.vetor[0][x] * laplace(A.vetor, 0, x)
+        return d
 
 def laplace(A, i, j):
     mat = list()
     A = Matriz(A)
 
-    for x in range(1, A.nLinhas):
-        mat.append(list())
-        for y in range(A.nColunas):
-            if y != j:
-                mat[x-1].append(A.vetor[x][y])
-
+    aux = 0
+    for x in range(A.nLinhas):
+        if x != i:
+            mat.append(list())
+            for y in range(A.nColunas):
+                if y != j:
+                    mat[x-aux].append(A.vetor[x][y])
+        else: aux = 1
+    
     return ((-1)**(i+j)) * det(mat)
+
+def inversa(A):
+    return produto((1/det(A)), transposta(cofator(A)))
+
+def cofator(A):
+    A = Matriz(A)
+    if A.nLinhas == 1: return A.vetor[0][0]
+    else:
+        c = list()
+        for i in range(A.nLinhas):
+            c.append(list())
+            for j in range(A.nColunas):
+                c[i].append(laplace(A.vetor, i, j))
+        return c

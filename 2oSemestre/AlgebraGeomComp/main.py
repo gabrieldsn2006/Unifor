@@ -40,5 +40,9 @@ ex6x6 = [
 [16, 15, 14, 13, 12, 11],
 ]
 
-print(Al.det(ex6x6))
-Al.exibir(ex2x2)
+ex = [
+[1, 2, 3],
+[0, 1, 0],
+[2, 1, -1]
+]
+print(Al.inversa(ex2x2))
