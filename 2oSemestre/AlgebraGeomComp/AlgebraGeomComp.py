@@ -30,8 +30,7 @@ def tr(A):
         for i in range(A.nLinhas):
             t += A.vetor[i][i]
         return t
-    else:
-        return None
+    else: return None
 
 
 def soma(A, B):
@@ -60,13 +59,14 @@ def produto(A, B):
                 aux.append(s)
             P.append(aux)
         return P
-    elif isinstance(A, (int, float)) or isinstance(B, (int, float)):  # matriz * cte
-        if isinstance(A, (int, float)):
+    else:  # matriz * cte
+        if isinstance(A, (int, float)) and isinstance(B, list):
             cte = A
             mat = Matriz(B)
-        else:
+        elif isinstance(A, list) and isinstance(B, (int, float)):
             cte = B
             mat = Matriz(A)
+        else: return None  # pq alguem faria isso?
         for i in range(mat.nLinhas):
             for j in range(mat.nColunas):
                 mat.vetor[i][j] *= cte
