@@ -73,28 +73,56 @@ def produto(A, B):
         return mat.vetor
 
 
-def sistema(*sis):
+def sistema(sis):
     sis = Matriz(sis)
 
     for i in range(sis.nLinhas):
 
+        if sis.vetor[i][i] == 0 and i == sis.nLinhas - 1:  # caso o último elemento a ser pivoteado seja 0
+            return tipo_de_solucao(sis.vetor[i])  # SPI/SI
+
+        elif sis.vetor[i][i] == 0:  # verificar se posso trocar linhas
+            for I in range(i+1, sis.nLinhas):
+                if sis.vetor[I][i] != 0: sis.vetor = troca(sis.vetor, i, I)  # troca
+            return tipo_de_solucao(sis.vetor[i])  # SPI/SI
+
         pivot = sis.vetor[i][i]  # capturando o divisor para o pivoteamento
         for j in range(sis.nColunas):  # pivoteamento
-            if sis.vetor[i][i] != 0:
-                sis.vetor[i][j] = sis.vetor[i][j]/pivot
+            if pivot != 0:
+                sis.vetor[i][j] = sis.vetor[i][j] / pivot
 
         aux = list()
-        for pos in range(sis.nLinhas):  # capturando a coluna referente a linha "i" que foi pivoteada
+        for pos in range(sis.nLinhas):  # capturando a coluna referente a linha "i" do elemento pivoteado pivoteada
             aux.append(sis.vetor[pos][i])
 
         for ii in range(sis.nLinhas):  # atribuindo valores para as outras linhas
             if ii != i:
-                for jj in range(sis.nColunas): sis.vetor[ii][jj] -= aux[ii]*sis.vetor[i][jj]
+                for jj in range(sis.nColunas): sis.vetor[ii][jj] -= aux[ii] * sis.vetor[i][jj]
 
     solucao = list()
     for iii in range(sis.nLinhas):  # separando a solução que é apenas a última coluna da matriz
-        solucao.append(float(f'{sis.vetor[iii][sis.nColunas-1]:.1f}'))
+        solucao.append(float(f'{sis.vetor[iii][sis.nColunas - 1]:.1f}'))
     return solucao
+
+
+def troca(A, i1, i2):
+    A = Matriz(A)
+    r = list()
+    for i in range(A.nLinhas):
+        r.append(list())
+        if i != i1 and i != i2: r[i].append(A.vetor[i])
+        if i == i1: r.append(A.vetor[i2])
+        if i == i2: r.append(A.vetor[i1])
+    return r
+
+
+def tipo_de_solucao(vetor):
+    cont = 0
+    for e in vetor:
+        if e == 0: cont += 1
+    if cont == len(vetor): return 'SPI'  # 'sistema possível indeterminado'
+    if cont == len(vetor) - 1 and vetor[len(vetor) - 1] != 0: return 'SI'  # sistema impossível'
+    # return 'SPD' # se de fato fosse um sistema possível determinado essa função nem seria chamada
 
 
 def det(A):
