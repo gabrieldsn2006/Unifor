@@ -9,10 +9,8 @@ class Matrix:
             elements_copy.append(elements[i][:])
         self.array = elements_copy
 
-        if self.rows == self.cols:
-            self.quadrado = True
-        else:
-            self.quadrado = False
+        if self.rows == self.cols: self.quadrado = True
+        else: self.quadrado = False
 
     def get(self, i, j):
         return self.array[i][j]
@@ -23,7 +21,6 @@ class Matrix:
     def exibir(self):  # método para facilitar exibição da matriz
         for i in range(self.rows):
             print(self.array[i])
-        print()
 
 
 class Vector:
@@ -51,7 +48,9 @@ class LinearAlgebra:
     def sum(self, A, B):  # retorna a soma entre duas matrizes
         if not isinstance(A, Matrix): A = Matrix(A)
         if not isinstance(B, Matrix): B = Matrix(B)
+
         if A.rows != B.rows or A.cols != B.cols: return None  # caso as A e B não sejam de mesma ordem
+
         s = list()
         for i in range(A.rows):
             s.append(list())
@@ -68,6 +67,7 @@ class LinearAlgebra:
             cte = B
             if not isinstance(A, Matrix): mat = Matrix(A)
             else: mat = Matrix(A.array)
+
         for i in range(mat.rows):
             for j in range(mat.cols):
                 mat.array[i][j] *= cte
@@ -77,7 +77,8 @@ class LinearAlgebra:
         if not isinstance(A, Matrix): A = Matrix(A)
         if not isinstance(B, Matrix): B = Matrix(B)
 
-        if A.cols != B.rows: return None
+        if A.cols != B.rows: return None  # condição para realizar produto entre matrizes
+
         d = list()
         for i in range(A.rows):
             aux = list()
@@ -92,6 +93,7 @@ class LinearAlgebra:
     def solve(self, A):
         if not isinstance(A, Matrix): sis = Matrix(A)
         else: sis = Matrix(A.array)
+
         gauss_result = self.gauss(sis.array)
         if isinstance(gauss_result, list):
             gauss_result = Matrix(gauss_result)
@@ -133,6 +135,7 @@ class LinearAlgebra:
 
     def switch_lines(self, A, i1, i2):
         if not isinstance(A, Matrix): A = Matrix(A)
+        
         result = list()
         for i in range(A.rows):
             result.append(list())
