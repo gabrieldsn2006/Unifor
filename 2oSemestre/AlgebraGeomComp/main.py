@@ -1,4 +1,4 @@
-import AlgGeoComp01 as Al
+import AlgebraGeomComp01 as Al
 
 # https://matrixcalc.org
 # https://www.wolframalpha.com
