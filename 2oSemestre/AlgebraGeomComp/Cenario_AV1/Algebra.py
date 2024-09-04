@@ -90,7 +90,7 @@ class LinearAlgebra:
             d.append(aux)
         return d
 
-    def solve(self, A):
+    def solve(self, A):  # retorna a solução de um sistema
         if not isinstance(A, Matrix): sis = Matrix(A)
         else: sis = Matrix(A.array)
 
@@ -103,7 +103,7 @@ class LinearAlgebra:
             solution.append(float(f'{gauss_result.array[i][gauss_result.cols - 1]:.1f}'))
         return solution
 
-    def gauss(self, A):
+    def gauss(self, A):  # retorna a matriz aumentada de um sistema após eliminação de Gauss
         if not isinstance(A, Matrix): sis = Matrix(A)
         else: sis = Matrix(A.array)
 
@@ -134,7 +134,7 @@ class LinearAlgebra:
 
         return sis.array
 
-    def switch_lines(self, A, i1, i2):
+    def switch_lines(self, A, i1, i2):  # troca de linhas
         if not isinstance(A, Matrix): A = Matrix(A)
 
         result = list()
@@ -145,7 +145,7 @@ class LinearAlgebra:
             if i == i2: result[i].append(A.array[i1])
         return result
 
-    def solution_type(self, array):
+    def solution_type(self, array):  # retorna o tipo de solução para um sistema
         cont = 0
         for e in array:
             if e == 0: cont += 1
