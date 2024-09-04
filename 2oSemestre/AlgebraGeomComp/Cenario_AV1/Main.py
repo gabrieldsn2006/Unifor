@@ -28,7 +28,7 @@ sistema02 = [[1, 1, 1, 3],
 sistema03 = [[1, 1, 1, 3],
              [2, 2, 2, 7]]
 
-sis = Matrix(sistema01)
+sis = Matrix(sistema03)
 print(f'Sistema de matriz aumentada: ')
 sis.exibir()
 print(f'Utilizando eliminação de Gauss: ')

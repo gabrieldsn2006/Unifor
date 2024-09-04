@@ -7,7 +7,7 @@ class Matrix:
         elements_copy = list()
         for i in range(self.rows):
             elements_copy.append(elements[i][:])
-        self.array = elements_copy
+        self.array = elements_copy  # cópia para garantir que nunhum objeto/array sejam linkados
 
         if self.rows == self.cols: self.quadrado = True
         else: self.quadrado = False
@@ -95,13 +95,12 @@ class LinearAlgebra:
         else: sis = Matrix(A.array)
 
         gauss_result = self.gauss(sis.array)
-        if isinstance(gauss_result, list):
-            gauss_result = Matrix(gauss_result)
-        else:
-            return gauss_result
+        if isinstance(gauss_result, list): gauss_result = Matrix(gauss_result)
+        else: return gauss_result
+
         solution = list()
-        for iii in range(gauss_result.rows):  # separando a solução que é apenas a última coluna da matriz
-            solution.append(float(f'{gauss_result.array[iii][gauss_result.cols - 1]:.1f}'))
+        for i in range(gauss_result.rows):  # separando a solução que é apenas a última coluna da matriz
+            solution.append(float(f'{gauss_result.array[i][gauss_result.cols - 1]:.1f}'))
         return solution
 
     def gauss(self, A):
@@ -114,14 +113,16 @@ class LinearAlgebra:
                 return self.solution_type(sis.array[i])  # SPI/SI
 
             elif sis.array[i][i] == 0:  # verificar se posso trocar linhas
-                for I in range(i + 1, sis.rows):
-                    if sis.array[I][i] != 0: sis.array = self.switch_lines(sis, i, I)  # troca
-                return self.solution_type(sis.array[i])  # SPI/SI
+                boolean_aux = False
+                for x in range(i+1, sis.rows):
+                    if sis.array[x][i] != 0:
+                        sis.array = self.switch_lines(sis, i, x)  # troca
+                        boolean_aux = True
+                if boolean_aux: return self.solution_type(sis.array[i])  # SPI/SI
 
             pivot = sis.array[i][i]  # capturando o divisor para o pivoteamento
             for j in range(sis.cols):  # pivoteamento
-                if pivot != 0:
-                    sis.array[i][j] = sis.array[i][j] / pivot
+                if pivot != 0: sis.array[i][j] = sis.array[i][j] / pivot
 
             aux = list()
             for pos in range(sis.rows):  # capturando a coluna referente a linha "i" do elemento pivoteado pivoteada
@@ -135,7 +136,7 @@ class LinearAlgebra:
 
     def switch_lines(self, A, i1, i2):
         if not isinstance(A, Matrix): A = Matrix(A)
-        
+
         result = list()
         for i in range(A.rows):
             result.append(list())
