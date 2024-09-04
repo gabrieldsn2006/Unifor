@@ -35,7 +35,6 @@ print(f'Utilizando eliminação de Gauss: ')
 gauss = Matrix(LA.gauss(sis))
 gauss.exibir()
 print(f'Solução: \n{LA.solve(sis)}')
-print()
 
 print(f'Exemplo de Matriz A: ')
 ex = Matrix(ex2x2)
