@@ -113,11 +113,11 @@ class LinearAlgebra:
                 return self.solution_type(sis.array[i])  # SPI/SI
 
             elif sis.array[i][i] == 0:  # verificar se posso trocar linhas
-                boolean_aux = False
+                boolean_aux = True
                 for x in range(i+1, sis.rows):
                     if sis.array[x][i] != 0:
                         sis.array = self.switch_lines(sis, i, x)  # troca
-                        boolean_aux = True
+                        boolean_aux = False
                 if boolean_aux: return self.solution_type(sis.array[i])  # SPI/SI
 
             pivot = sis.array[i][i]  # capturando o divisor para o pivoteamento
