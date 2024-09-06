@@ -183,3 +183,4 @@ class LinearAlgebra:
 
 # também fiz um método para calcular determinante e inversa
 # o codigo completo pode ser acessado nesse link:
+# https://github.com/gabrieldsn2006/Unifor/blob/main/2oSemestre/AlgebraGeomComp/AlgebraGeomComp.py
