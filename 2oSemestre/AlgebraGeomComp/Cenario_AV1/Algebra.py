@@ -47,9 +47,9 @@ class LinearAlgebra:
         return t
 
     def sum(self, a, b):  # retorna a soma entre duas matrizes
-        if not isinstance(a, Matrix): A = Matrix(A)
+        if not isinstance(a, Matrix): A = Matrix(a)
         else: A = Matrix(a.array)
-        if not isinstance(b, Matrix): B = Matrix(B)
+        if not isinstance(b, Matrix): B = Matrix(b)
         else: B = Matrix(b.array)
 
         if A.rows != B.rows or A.cols != B.cols: return None  # caso as A e B não sejam de mesma ordem
@@ -97,9 +97,9 @@ class LinearAlgebra:
             return t.array
 
     def dot(self, a, b):  # esse método retorna Matriz resultante do Produto entre Matrizes
-        if not isinstance(a, Matrix): A = Matrix(A)
+        if not isinstance(a, Matrix): A = Matrix(a)
         else: A = Matrix(a.array)
-        if not isinstance(b, Matrix): B = Matrix(B)
+        if not isinstance(b, Matrix): B = Matrix(b)
         else: B = Matrix(b.array)
 
         if A.cols != B.rows: return None  # condição para realizar produto entre matrizes
