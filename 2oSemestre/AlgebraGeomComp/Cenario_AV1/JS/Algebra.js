@@ -1,4 +1,4 @@
-class Matrix {
+export class Matrix {
     constructor(vetor) {
         // considerei desnecessário um Construtor receber 'rows' e 'cols' como argumentos
         this.rows = vetor.length
@@ -29,7 +29,7 @@ class Matrix {
     }
 }
 
-class Vector {
+export class Vector {
     constructor(dim, elem) {
         this.dimensions = dim
 
@@ -46,8 +46,8 @@ class Vector {
     }
 }
 
-class LinearAlgebra {
-    transposta(a) {  // retorna a transposta de uma matriz
+export class LinearAlgebra {
+    transpose(a) {  // retorna a transposta de uma matriz
         if (a instanceof Array) var A = new Matrix(a)
         else var A = new Matrix(a.array)
         var t = new Array()

@@ -93,7 +93,7 @@ class LinearAlgebra:
             t = Matrix(B.array)  # 't' é minha variável de retorno
             for i in range(B.rows):
                 for j in range(B.cols):
-                    t[i][j] *= cte
+                    t.array[i][j] *= cte
             return t.array
 
     def dot(self, a, b):  # esse método retorna Matriz resultante do Produto entre Matrizes
