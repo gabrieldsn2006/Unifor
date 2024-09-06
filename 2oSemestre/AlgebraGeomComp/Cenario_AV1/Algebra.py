@@ -72,7 +72,7 @@ class LinearAlgebra:
             for i in range(A.rows):
                 t.append(list())
                 for j in range(A.cols):
-                    t.append((A.array[i][j]) * (B.array[i][j]))
+                    t[i].append((A.array[i][j]) * (B.array[i][j]))
             return t
 
         # produto (Vector)
