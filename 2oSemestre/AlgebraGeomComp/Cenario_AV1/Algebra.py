@@ -36,8 +36,9 @@ class Vector:
 
 
 class LinearAlgebra:
-    def transpose(self, A):  # retorna a transposta de uma matriz
-        if not isinstance(A, Matrix): A = Matrix(A)
+    def transpose(self, a):  # retorna a transposta de uma matriz
+        if not isinstance(a, Matrix): A = Matrix(a)
+        else: A = Matrix(a.array)
         t = list()  # 't' é minha variável de retorno
         for i in range(A.cols):
             t.append(list())
@@ -45,9 +46,11 @@ class LinearAlgebra:
                 t[i].append(A.array[j][i])
         return t
 
-    def sum(self, A, B):  # retorna a soma entre duas matrizes
-        if not isinstance(A, Matrix): A = Matrix(A)
-        if not isinstance(B, Matrix): B = Matrix(B)
+    def sum(self, a, b):  # retorna a soma entre duas matrizes
+        if not isinstance(a, Matrix): A = Matrix(A)
+        else: A = Matrix(a.array)
+        if not isinstance(b, Matrix): B = Matrix(B)
+        else: B = Matrix(b.array)
 
         if A.rows != B.rows or A.cols != B.cols: return None  # caso as A e B não sejam de mesma ordem
 
@@ -59,11 +62,11 @@ class LinearAlgebra:
         return s
 
     def times(self, A, B):
-        # não sei se interpretei corretamente o que estava no pdf então resolvi fazer todas as opções mesmo
+        # não sei se interpretei corretamente o que estava no pdf então resolvi fazer todas as opções mesmo.
 
-        # esse método pode retornar uma Matriz resultante do produto de uma Matriz por Escalar (Matriz * Cte)
-        # ou retornar uma Matriz resultante do produto de elemento a elemento entre duas matrizes (Matriz, Matriz)
-        # ou retornar o vetor resultante do produto de elemento a elemento de dois vetores (u * v)
+        # esse método pode retornar uma Matriz resultante do produto de uma Matriz por Escalar (Matriz * Cte).
+        # ou retornar uma Matriz resultante do produto de elemento a elemento entre duas matrizes (Matriz, Matriz).
+        # ou retornar o vetor resultante do produto de elemento a elemento de dois vetores (u * v).
 
         # produto termo a termo (Matrix)
         if isinstance(A, Matrix) and isinstance(B, Matrix):
@@ -87,15 +90,17 @@ class LinearAlgebra:
         # produto (Escalar * Matrix)
         elif isinstance(A, (int, float)) and isinstance(B, Matrix):
             cte = A
-            t = B.array[:]  # 't' é minha variável de retorno
+            t = Matrix(B.array)  # 't' é minha variável de retorno
             for i in range(B.rows):
                 for j in range(B.cols):
                     t[i][j] *= cte
-            return t
+            return t.array
 
-    def dot(self, A, B):  # esse método retorna Matriz resultante do Produto entre Matrizes
-        if not isinstance(A, Matrix): A = Matrix(A)
-        if not isinstance(B, Matrix): B = Matrix(B)
+    def dot(self, a, b):  # esse método retorna Matriz resultante do Produto entre Matrizes
+        if not isinstance(a, Matrix): A = Matrix(A)
+        else: A = Matrix(a.array)
+        if not isinstance(b, Matrix): B = Matrix(B)
+        else: B = Matrix(b.array)
 
         if A.cols != B.rows: return None  # condição para realizar produto entre matrizes
 
@@ -145,7 +150,7 @@ class LinearAlgebra:
                 if pivot != 0: sis.array[i][j] = sis.array[i][j] / pivot
 
             aux = list()
-            for pos in range(sis.rows):  # capturando a coluna referente a linha "i" do elemento pivoteado pivoteada
+            for pos in range(sis.rows):  # capturando a coluna do elemento pivoteado
                 aux.append(sis.array[pos][i])
 
             for ii in range(sis.rows):  # atribuindo valores para as outras linhas
@@ -154,8 +159,9 @@ class LinearAlgebra:
 
         return sis.array
 
-    def switch_lines(self, A, i1, i2):  # troca de linhas
-        if not isinstance(A, Matrix): A = Matrix(A)
+    def switch_lines(self, a, i1, i2):  # troca de linhas
+        if not isinstance(a, Matrix): A = Matrix(a)
+        else: A = Matrix(a.array)
 
         result = list()
         for i in range(A.rows):
@@ -177,4 +183,3 @@ class LinearAlgebra:
 
 # também fiz um método para calcular determinante e inversa
 # o codigo completo pode ser acessado nesse link:
-# https://github.com/gabrieldsn2006/Unifor/blob/main/2oSemestre/AlgebraGeomComp/AlgebraGeomComp.py
