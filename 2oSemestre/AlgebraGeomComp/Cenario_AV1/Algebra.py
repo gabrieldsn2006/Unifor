@@ -38,7 +38,7 @@ class Vector:
 class LinearAlgebra:
     def transpose(self, A):  # retorna a transposta de uma matriz
         if not isinstance(A, Matrix): A = Matrix(A)
-        t = list()
+        t = list()  # 't' é minha variável de retorno
         for i in range(A.cols):
             t.append(list())
             for j in range(A.rows):
@@ -51,35 +51,55 @@ class LinearAlgebra:
 
         if A.rows != B.rows or A.cols != B.cols: return None  # caso as A e B não sejam de mesma ordem
 
-        s = list()
+        s = list()  # 's' é minha variável de retorno
         for i in range(A.rows):
             s.append(list())
             for j in range(A.cols):
                 s[i].append((A.array[i][j]) + (B.array[i][j]))
         return s
 
-    def times(self, A, B):  # considerei esse método como Matriz * Escalar/Cte
-        if isinstance(A, (int, float)) and isinstance(B, (list, Matrix)):  # Cte * Matriz
+    def times(self, A, B):
+        # não sei se interpretei corretamente o que estava no pdf então resolvi fazer todas as opções mesmo
+
+        # esse método pode retornar uma Matriz resultante do produto de uma Matriz por Escalar (Matriz * Cte)
+        # ou retornar uma Matriz resultante do produto de elemento a elemento entre duas matrizes (Matriz, Matriz)
+        # ou retornar o vetor resultante do produto de elemento a elemento de dois vetores (u * v)
+
+        # produto termo a termo (Matrix)
+        if isinstance(A, Matrix) and isinstance(B, Matrix):
+            if A.rows != B.rows or A.cols != B.cols: return None  # caso as A e B não sejam de mesma ordem
+            t = list()  # 't' é minha variável de retorno
+            for i in range(A.rows):
+                t.append(list())
+                for j in range(A.cols):
+                    t.append((A.array[i][j]) * (B.array[i][j]))
+            return t
+
+        # produto (Vector)
+        # considerando apenas vetores de 1 dimensão como estudamos até então
+        elif isinstance(A, Vector) and isinstance(B, Vector):
+            if len(A.elements) != len(B.elements): return None  # caso os vetores tenham tamanhos diferentes
+            t = list()  # 't' é minha variável de retorno
+            for i in range(len(A.elements)):
+                t.append(A.elements[i] * B.elements[i])
+            return t
+
+        # produto (Escalar * Matrix)
+        elif isinstance(A, (int, float)) and isinstance(B, Matrix):
             cte = A
-            if not isinstance(B, Matrix): mat = Matrix(B)
-            else: mat = Matrix(B.array)
-        elif isinstance(A, (list, Matrix)) and isinstance(B, (int, float)):  # Matriz * Cte
-            cte = B
-            if not isinstance(A, Matrix): mat = Matrix(A)
-            else: mat = Matrix(A.array)
+            t = B.array[:]  # 't' é minha variável de retorno
+            for i in range(B.rows):
+                for j in range(B.cols):
+                    t[i][j] *= cte
+            return t
 
-        for i in range(mat.rows):
-            for j in range(mat.cols):
-                mat.array[i][j] *= cte
-        return mat.array
-
-    def dot(self, A, B):  # considerei esse método Produto entre Matrizes
+    def dot(self, A, B):  # esse método retorna Matriz resultante do Produto entre Matrizes
         if not isinstance(A, Matrix): A = Matrix(A)
         if not isinstance(B, Matrix): B = Matrix(B)
 
         if A.cols != B.rows: return None  # condição para realizar produto entre matrizes
 
-        d = list()
+        d = list()  # 'd' é minha variável de retorno
         for i in range(A.rows):
             aux = list()
             for k in range(B.cols):
@@ -114,7 +134,7 @@ class LinearAlgebra:
 
             elif sis.array[i][i] == 0:  # verificar se posso trocar linhas
                 boolean_aux = True
-                for x in range(i+1, sis.rows):
+                for x in range(i + 1, sis.rows):
                     if sis.array[x][i] != 0:
                         sis.array = self.switch_lines(sis, i, x)  # troca
                         boolean_aux = False

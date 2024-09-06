@@ -28,7 +28,7 @@ sistema02 = [[1, 1, 1, 3],
 sistema03 = [[1, 1, 1, 3],
              [2, 2, 2, 7]]
 
-sis = Matrix(sistema01)
+sis = Matrix(sistema02)
 print(f'Sistema de matriz aumentada: ')
 sis.exibir()
 print(f'Utilizando eliminação de Gauss: ')
@@ -45,9 +45,9 @@ transposta.exibir()
 print(f'Soma A + B (B = A nesse caso de teste): ')
 soma = Matrix(LA.sum(ex, ex))
 soma.exibir()
-print(f'Produto Escalar A * cte (cte = 4 nesse caso de teste): ')
-prod_escalar = Matrix(LA.times(4, ex))
-prod_escalar.exibir()
 print(f'Produto entre matrizes A * B (B = A nesse caso de teste): ')
 prod = Matrix(LA.dot(ex, ex))
 prod.exibir()
+print(f'Produto Escalar A * cte (cte = 4 nesse caso de teste): ')
+prod_escalar = Matrix(LA.times(4, ex))
+prod_escalar.exibir()
