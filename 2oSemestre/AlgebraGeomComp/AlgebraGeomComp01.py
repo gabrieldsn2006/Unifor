@@ -82,9 +82,15 @@ def sistema(sis):
             return tipo_de_solucao(sis.vetor[i])  # SPI/SI
 
         elif sis.vetor[i][i] == 0:  # verificar se posso trocar linhas
-            for I in range(i+1, sis.nLinhas):
-                if sis.vetor[I][i] != 0: sis.vetor = troca(sis.vetor, i, I)  # troca
-            return tipo_de_solucao(sis.vetor[i])  # SPI/SI
+            # for I in range(i+1, sis.nLinhas):
+            #     if sis.vetor[I][i] != 0: sis.vetor = troca(sis.vetor, i, I)  # troca
+            # return tipo_de_solucao(sis.vetor[i])  # SPI/SI
+            boolean_aux = True
+            for x in range(i + 1, sis.nLinhas):
+                if sis.array[x][i] != 0:
+                    sis.array = troca(sis, i, x)  # troca
+                    boolean_aux = False
+            if boolean_aux: return tipo_de_solucao(sis.array[i])  # SPI/SI
 
         pivot = sis.vetor[i][i]  # capturando o divisor para o pivoteamento
         for j in range(sis.nColunas):  # pivoteamento

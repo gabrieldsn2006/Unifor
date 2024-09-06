@@ -46,3 +46,4 @@ ex = [
 [2, 1, -1]
 ]
 print(Al.inversa(ex2x2))
+print(Al.det(ex2x2))
