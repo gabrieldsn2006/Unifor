@@ -29,11 +29,15 @@ sistema02 = [[1, 1, 1, 3],
 sistema03 = [[1, 1, 1, 3],
              [2, 2, 2, 6],
              [3, 3, 3, 8]]
+# SPD
+sistema04 = [[0, 2, 1, 5],
+             [1, 1, 3, 10],
+             [2, 2, 5, 15]]
 
 vector01 = [1, 2, 3, 4]
 vector02 = [8, 6, 4, 2]
 
-sis = Matrix(sistema03)
+sis = Matrix(sistema04)
 print('Sistema de Matriz aumentada: ')
 sis.exibir()
 print('Utilizando Eliminação de Gauss: ')

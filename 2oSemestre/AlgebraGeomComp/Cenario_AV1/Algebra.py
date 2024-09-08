@@ -136,10 +136,12 @@ class LinearAlgebra:
 
         for i in range(sis.rows):
 
-            if sis.array[i][i] == 0 and i == sis.rows - 1:  # caso o último elemento a ser pivoteado seja 0
-                return self.solution_type(sis.array[i])  # SPI/SI
+            # if sis.array[i][i] == 0 and i == sis.rows - 1:  # caso o último elemento a ser pivoteado seja 0
+            #     return self.solution_type(sis.array[i])  # SPI/SI
 
-            elif sis.array[i][i] == 0:  # verificar se posso trocar linhas
+            if sis.array[i][i] == 0:  # verificar se posso trocar linhas
+                if i == sis.rows - 1: return self.solution_type(sis.array[i])
+
                 boolean_aux = True
                 for x in range(i + 1, sis.rows):
                     if sis.array[x][i] != 0:
@@ -170,10 +172,9 @@ class LinearAlgebra:
 
         result = list()
         for i in range(A.rows):
-            result.append(list())
-            if i != i1 and i != i2: result[i].append(A.array[i])
-            if i == i1: result[i].append(A.array[i2])
-            if i == i2: result[i].append(A.array[i1])
+            if i != i1 and i != i2: result.append(A.array[i])
+            if i == i1: result.append(A.array[i2])
+            if i == i2: result.append(A.array[i1])
         return result
 
     def solution_type(self, array):  # retorna o tipo de solução para um sistema
