@@ -23,15 +23,17 @@ sistema01 = [[1,  1, 1, 3],
              [1,  2, 3, 6]]
 # SPI:
 sistema02 = [[1, 1, 1, 3],
-             [2, 2, 2, 6]]
+             [2, 2, 2, 6],
+             [3, 3, 3, 9]]
 # SI:
 sistema03 = [[1, 1, 1, 3],
-             [2, 2, 2, 7]]
+             [2, 2, 2, 7],
+             [3, 3, 3, 8]]
 
 vector01 = [1, 2, 3, 4]
 vector02 = [8, 6, 4, 2]
 
-sis = Matrix(sistema02)
+sis = Matrix(sistema01)
 print('Sistema de Matriz aumentada: ')
 sis.exibir()
 print('Utilizando Eliminação de Gauss: ')

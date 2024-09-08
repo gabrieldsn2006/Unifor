@@ -132,6 +132,8 @@ class LinearAlgebra:
         if not isinstance(A, Matrix): sis = Matrix(A)
         else: sis = Matrix(A.array)
 
+        if sis.rows < sis.cols - 1: return 'SPI'  # caso o número de equações seja menor que o número de incógnitas
+
         for i in range(sis.rows):
 
             if sis.array[i][i] == 0 and i == sis.rows - 1:  # caso o último elemento a ser pivoteado seja 0
