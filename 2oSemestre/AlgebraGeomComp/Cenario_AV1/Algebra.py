@@ -145,7 +145,10 @@ class LinearAlgebra:
                     if sis.array[x][i] != 0:
                         sis.array = self.switch_lines(sis, i, x)  # troca
                         boolean_aux = False
-                if boolean_aux: return self.solution_type(sis.array[i])  # SPI/SI
+                if boolean_aux:  # SPI/SI
+                    for y in range(i, sis.rows):
+                        if self.solution_type(sis.array[y]) == 'SI': return 'SI'
+                    return 'SPI'
 
             pivot = sis.array[i][i]  # capturando o divisor para o pivoteamento
             for j in range(sis.cols):  # pivoteamento

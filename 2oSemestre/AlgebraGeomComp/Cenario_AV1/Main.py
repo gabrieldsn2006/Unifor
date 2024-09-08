@@ -27,13 +27,13 @@ sistema02 = [[1, 1, 1, 3],
              [3, 3, 3, 9]]
 # SI:
 sistema03 = [[1, 1, 1, 3],
-             [2, 2, 2, 7],
+             [2, 2, 2, 6],
              [3, 3, 3, 8]]
 
 vector01 = [1, 2, 3, 4]
 vector02 = [8, 6, 4, 2]
 
-sis = Matrix(sistema01)
+sis = Matrix(sistema03)
 print('Sistema de Matriz aumentada: ')
 sis.exibir()
 print('Utilizando Eliminação de Gauss: ')
