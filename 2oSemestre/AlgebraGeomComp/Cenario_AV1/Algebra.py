@@ -185,7 +185,7 @@ class LinearAlgebra:
             return 'SPI'  # ex.: 0x + 0y + 0z = 0
         elif cont == len(array) - 1 and array[len(array) - 1] != 0:
             return 'SI'  # ex.: 0x + 0y + 0z = -1
-        # else: return 'SPD' # se de fato fosse um sistema possível determinado essa função nem seria chamada
+        else: return 'SPD'
 
 # também fiz um método para calcular determinante e inversa
 # o codigo completo pode ser acessado nesse link:
