@@ -179,7 +179,12 @@ export class LinearAlgebra {
                         boolean_aux = false
                     }
                 }
-                if (boolean_aux) return this.solution_type(sis.array[i])  // SPI/SI
+                if (boolean_aux) {
+                    for (var y = 0; y < sis.rows; y++) {
+                        if (this.solution_type(sis.array[y]) == 'SI') return 'SI'
+                    }
+                    return this.solution_type(sis.array[i])  // SPI/SI
+                }
             }
 
             var pivot = sis.array[i][i]  // capturando o divisor para o pivoteamento
