@@ -168,6 +168,8 @@ export class LinearAlgebra {
             // caso o último elemento a ser pivoteado seja 0
             if (sis.array[i][i] == 0 && i == sis.rows - 1) return this.solution_type(sis.array[i])
             
+            if (sis.rows < sis.cols - 1) return 'SPI'  // caso o número de equações seja menor que o número de incógnitas
+            
             // verificar se posso trocar linhas
             else if (sis.array[i][i] == 0) {
                 var boolean_aux = true
