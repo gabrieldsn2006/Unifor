@@ -290,7 +290,7 @@ function main() {
     prod.exibir()
     console.log("Produto Escalar cte * A (cte = 4 nesse caso de teste): ")
     var prod_escalar = new Matrix(LA.times(4, ex))
-    prod_escalar.exibir
+    prod_escalar.exibir()
     console.log("Produto elemento a elemento de Matrizes A e B (B = A nesse caso de teste): ")
     var prod_elem = new Matrix(LA.times(ex, ex))
     prod_elem.exibir()
