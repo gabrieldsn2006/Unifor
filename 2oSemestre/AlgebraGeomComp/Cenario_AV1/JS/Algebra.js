@@ -110,7 +110,7 @@ class LinearAlgebra {
         }
 
         // produto (Escalar * Matrix)
-        if (!(A instanceof Matrix && A instanceof Vector) && B instanceof Matrix) {
+        if (typeof A == 'number' && B instanceof Matrix) {
             var cte = A
             // console.log(B.array)
             var t = new Matrix(B.array)  // 't' é minha variável de retorno
@@ -274,7 +274,7 @@ function main() {
     var vector01 = [1, 2, 3, 4]
     var vector02 = [8, 6, 4, 2]
     
-    var sis = new Matrix(sistema02)
+    var sis = new Matrix(sistema03)
     console.log("Sistema de Matriz aumentada: ")
     sis.exibir()
     console.log("Utilizando Eliminação de Gauss: ")
