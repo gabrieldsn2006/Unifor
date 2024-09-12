@@ -2,7 +2,6 @@ class Matrix {
     constructor(vetor) {
         // considerei desnecessário um Construtor receber 'rows' e 'cols' como argumentos
         this.rows = vetor.length
-        console.log(vetor[0])
         this.cols = vetor[0].length
 
         var copy = new Array()
