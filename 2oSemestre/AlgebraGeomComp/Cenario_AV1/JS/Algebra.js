@@ -260,15 +260,21 @@ function main() {
                      [1,  2, 3, 6]]
     // SPI:
     var sistema02 = [[1, 1, 1, 3],
-                     [2, 2, 2, 6]]
+                     [2, 2, 2, 6],
+                     [3, 3, 3, 9]]
     // SI:
     var sistema03 = [[1, 1, 1, 3],
-                     [2, 2, 2, 7]]
+                     [2, 2, 2, 6],
+                     [3, 3, 3, 8]]
+    // SPD:
+    sistema04 = [[0, 2, 1, 5],
+                 [1, 1, 3, 10],
+                 [2, 2, 5, 15]]
     
     var vector01 = [1, 2, 3, 4]
     var vector02 = [8, 6, 4, 2]
     
-    var sis = new Matrix(sistema01)
+    var sis = new Matrix(sistema02)
     console.log("Sistema de Matriz aumentada: ")
     sis.exibir()
     console.log("Utilizando Eliminação de Gauss: ")
