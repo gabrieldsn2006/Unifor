@@ -210,18 +210,6 @@ class LinearAlgebra {
         }
         return sis.array
     }
-
-        // aux = list()
-        //     for pos in range(sis.rows):  # capturando a coluna do elemento pivoteado
-        //         aux.append(sis.array[pos][i])
-    
-        //     for ii in range(sis.rows):  # atribuindo valores para as outras linhas
-        //         if ii != i:
-        //             for jj in range(sis.cols):
-                        // sis.array[ii][jj] -= aux[ii] * sis.array[i][jj]
-
-
-
     
     switch_lines(a, i1, i2) {  // troca de linhas
         if (a instanceof Array) var A = new Matrix(a)
