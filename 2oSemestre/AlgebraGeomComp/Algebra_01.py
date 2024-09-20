@@ -63,7 +63,7 @@ class LinearAlgebra:
         if not isinstance(a, Matriz): A = Matriz(a)
         else: A = Matriz(a.array) 
 
-        e = Matriz(A.array)  # 't' é minha variável de retorno
+        e = Matriz(A.array)
         for i in range(A.nLinhas):
             for j in range(A.nColunas):
                 e.array[i][j] *= cte
@@ -107,7 +107,7 @@ class LinearAlgebra:
             A.array[i][j] *= value
         return A.array
     
-    def atribuir_linha(self, a, i1, i2, k):  # sol, 1, 0, sol.array[1][0]
+    def atribuir_linha(self, a, i1, i2, k):
         if not isinstance(a, Matriz): A = Matriz(a)
         else: A = Matriz(a.array)
 
