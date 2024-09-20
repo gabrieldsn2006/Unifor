@@ -1,4 +1,5 @@
-import AlgebraGeomComp01 as Al
+import Algebra_01 as Al
+LA = Al.LinearAlgebra()
 
 # https://matrixcalc.org
 # https://www.wolframalpha.com
@@ -40,10 +41,30 @@ ex6x6 = [
 [16, 15, 14, 13, 12, 11],
 ]
 
-ex = [
-[1, 2, 3],
-[0, 1, 0],
-[2, 1, -1]
-]
-print(Al.inversa(ex2x2))
-print(Al.det(ex2x2))
+# SPI
+sistema00 = [[2, 2, 2, 2, 2, 4],
+       [5, 4, 6, 5, 5, 11],
+       [-2, -2, -2, -2, -1, 0]]
+
+# SPD:
+sistema01 = [[1,  1, 1, 3],
+             [2, -1, 3, 4],
+             [1,  2, 3, 6]]
+# SPI:
+sistema02 = [[1, 1, 1, 3],
+             [2, 2, 2, 6],
+             [3, 3, 3, 9]]
+# SI:
+sistema03 = [[1, 1, 1, 3],
+             [2, 2, 2, 6],
+             [3, 3, 3, 8]]
+# SPD
+sistema04 = [[0, 2, 1, 5],
+             [1, 1, 3, 10],
+             [2, 2, 5, 15]]
+
+sol = Al.Matriz(LA.gauss(sistema04))
+sol.exibir()
+print()
+print(LA.solucao(sol))
+print(LA.tipo_de_solucao(sol))
