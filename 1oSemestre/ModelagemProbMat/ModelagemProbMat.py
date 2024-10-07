@@ -4,6 +4,7 @@ def funcao(vetor, x):
         y += vetor[0][i]*(x**vetor[1][i])
     return y
 
+
 def derivada(vetor, x):
     vetor_derivada = [[], []]
     for i in range(len(vetor[0])):
