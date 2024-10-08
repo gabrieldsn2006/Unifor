@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner entrada = new Scanner(System.in);
 
-    static char[][] gameMatrix = new char[][] {{' ', ' ', 'A', ' ', ' ', ' ', 'B', ' ', ' ', ' ', 'C', ' '}, {'1', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'2', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'3', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}};
+    static char[][] gameMatrix = new char[][] {{' ', ' ', 'A', ' ', ' ', ' ', 'B', ' ', ' ', ' ', 'C', ' '}, {'3', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'2', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'1', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}};
 
     static boolean playing = true;
 
@@ -68,9 +68,9 @@ public class Main {
                     if (play[0] == 'B') actualPlay[0] = 6;
                     if (play[0] == 'C') actualPlay[0] = 10;
 
-                    if (play[1] == '1') actualPlay[1] = 1;
+                    if (play[1] == '1') actualPlay[1] = 5;
                     if (play[1] == '2') actualPlay[1] = 3;
-                    if (play[1] == '3') actualPlay[1] = 5;
+                    if (play[1] == '3') actualPlay[1] = 1;
 
                     if (gameMatrix[actualPlay[1]][actualPlay[0]] == ' ') {
                         gameMatrix[actualPlay[1]][actualPlay[0]] = xo;
