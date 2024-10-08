@@ -61,22 +61,22 @@ public class Main {
             char[] play = (((entrada.nextLine()).toUpperCase()).strip()).toCharArray();
 
             if (play.length == 2) {
-            if ((play[0] == 'A' || play[0] == 'B' || play[0] == 'C') && (play[1] == '1' || play[1] == '2' || play[1] == '3')) {
-                int[] actualPlay = new int[2];
+                if ((play[0] == 'A' || play[0] == 'B' || play[0] == 'C') && (play[1] == '1' || play[1] == '2' || play[1] == '3')) {
+                    int[] actualPlay = new int[2];
+    
+                    if (play[0] == 'A') actualPlay[0] = 2;
+                    if (play[0] == 'B') actualPlay[0] = 6;
+                    if (play[0] == 'C') actualPlay[0] = 10;
 
-                if (play[0] == 'A') actualPlay[0] = 2;
-                if (play[0] == 'B') actualPlay[0] = 6;
-                if (play[0] == 'C') actualPlay[0] = 10;
+                    if (play[1] == '1') actualPlay[1] = 1;
+                    if (play[1] == '2') actualPlay[1] = 3;
+                    if (play[1] == '3') actualPlay[1] = 5;
 
-                if (play[1] == '1') actualPlay[1] = 1;
-                if (play[1] == '2') actualPlay[1] = 3;
-                if (play[1] == '3') actualPlay[1] = 5;
-
-                if (gameMatrix[actualPlay[1]][actualPlay[0]] == ' ') {
-                    gameMatrix[actualPlay[1]][actualPlay[0]] = xo;
-                    return;
+                    if (gameMatrix[actualPlay[1]][actualPlay[0]] == ' ') {
+                        gameMatrix[actualPlay[1]][actualPlay[0]] = xo;
+                        return;
+                    }
                 }
-            }
             }
             System.out.println("INSIRA UMA JOGADA VALIDA!");
         }
