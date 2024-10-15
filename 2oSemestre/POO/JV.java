@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class JV {
     static Scanner entrada = new Scanner(System.in);
 
     static char[][] gameMatrix = new char[][] {{' ', ' ', 'A', ' ', ' ', ' ', 'B', ' ', ' ', ' ', 'C', ' '}, {'3', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'2', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}, {' ', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'1', ' ', ' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' '}};
@@ -86,7 +86,7 @@ public class Main {
         // [1][2] / [1][6] / [1][10]
         // [3][2] / [3][6] / [3][10]
         // [5][2] / [5][6] / [5][10]
-        // 8 possible WIN CONDITION
+        // 8 WIN CONDITION
 
         // horizontalmente (3)
         for (int j = 1; j <= 5; j = j + 2) {
@@ -111,7 +111,7 @@ public class Main {
         }
         if (gameMatrix[1][10] == xo && gameMatrix[3][6] == xo && gameMatrix[5][2] == xo) {
             playing = false;
-            return;
+            // return;
         }
     }
 
