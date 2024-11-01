@@ -93,18 +93,18 @@ parse_buffer:
     	li 	flagSign, 	0
 
 parse_number:
-    	# Verificar se o caractere é um dígito ( realmente é necessário ? )
+    	# VERIFICAR SE CARACTERE É UM DÍGITO
 	li 	aux, 		0x30               	# ASCII '0'
-    	blt 	character, 	aux, 	store_number 	# Se o caractere não for um dígito, armazena o número
+    	blt 	character, 	aux, 	store_number
     	li 	aux, 		0x39               	# ASCII '9'
-    	bgt 	character, 	aux, 	store_number	# Se o caractere não for um dígito, armazena o número
+    	bgt 	character, 	aux, 	store_number
 	
-    	# Atualizar o número acumulado (número = número * 10 + (caractere - '0'))
+    	# UPDATE accumulated ( accumulated = accumulated * 10 + (digit - '0') )
     	sub 	digit,		character, 	0x30	# '0' em ASCII
     	mul 	accumulated, 	accumulated, 	10
    	add 	accumulated, 	accumulated, 	digit
 
-    	# Ler o próximo caractere e verificar novamente
+    	# LOAD NEXT CHAR
     	lb 	character, 	buffer1(bufferIndex)
     	addi 	bufferIndex, 	bufferIndex, 	1
     	j 	parse_number
@@ -117,9 +117,9 @@ negative_number:
     	j 	parse_number           				# Prosseguir para converter o número
 
 store_number:
-    	# 7. Aplicar o sinal negativo, se necessário, e armazenar o número na lista de inteiros
+    	# VERIFICAR flagSign
    	beq 	flagSign, 	0, 	positive_number
-   	sub 	accumulated, 	$zero, 	accumulated      	# Se negativo, faz $t5 = -$t5
+   	sub 	accumulated, 	$zero, 	accumulated
 
 positive_number:
 	# UPDATE int_list
