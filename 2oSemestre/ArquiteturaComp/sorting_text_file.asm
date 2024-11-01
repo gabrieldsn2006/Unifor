@@ -18,7 +18,7 @@
 .eqv	bufferIndex	$t2	# index 2
 .eqv	character	$t3	# value 2
 .eqv	charIndex	$t4	# index 3
-.eqv	remainder	$t5	# IntToChar
+.eqv	remainder	$t5	# IntToChar 1
 .eqv	quotient	$t6	# IntToChar 2
 .eqv	flagSign	$t7	# flag
 
