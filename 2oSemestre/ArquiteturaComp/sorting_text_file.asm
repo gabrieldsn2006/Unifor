@@ -9,8 +9,8 @@
 .eqv	nextIndex	$t2	# index 2
 .eqv	nextValue	$t3	# value 2
 .eqv	ordered		$t4	# loop 1
-.eqv	L1_lastIndex	$t5	# loop 1 end condition
-.eqv	L2_lastIndex	$t6	# loop 2 end condition
+.eqv	L1_lastIndex	$t5	# loop 1 range
+.eqv	L2_lastIndex	$t6	# loop 2 range
 .eqv	LENGHT		$s1	# int_list LENGHT
 
 .eqv	writeIndex	$t0	# index
