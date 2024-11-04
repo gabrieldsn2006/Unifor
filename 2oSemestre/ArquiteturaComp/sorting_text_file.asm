@@ -110,11 +110,11 @@ parse_number:
     	j 	parse_number
 
 negative_number:
-    	# Se o caractere for '-', definir flag negativa e continuar para o próximo caractere
-   	li 	flagSign, 	1               	 	# Define a flag como negativa
-    	lb 	character, 	buffer1(bufferIndex)      	# Carrega o próximo caractere do buffer
-    	addi 	bufferIndex, 	bufferIndex, 	1         	# Avança para o próximo caractere
-    	j 	parse_number           				# Prosseguir para converter o número
+    	# DEFINIR FLAG E SEGUIR PARA PRÓXIMO CARACTERE
+   	li 	flagSign, 	1
+    	lb 	character, 	buffer1(bufferIndex)
+    	addi 	bufferIndex, 	bufferIndex, 	1
+    	j 	parse_number
 
 store_number:
     	# VERIFICAR flagSign
