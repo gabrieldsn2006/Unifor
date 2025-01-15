@@ -6,6 +6,6 @@
 
 <p>Ao final da disciplina ainda reutilizei o seguidor de linha na competição do Dia T (evento promovido pelo CCT da Unifor). Nossa equipe ficou em 4o lugar.</p>
 
-<div style="text-align: center;">
+<p align="center">
     <img src="seguidor_de_linha.JPEG" alt="registro do carrinho seguidor de linha" width="360">
-</div>
+</p>
